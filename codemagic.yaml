@@ -6,12 +6,12 @@ workflows:
         name: iOS App
         environment:
             vars:
-                XCODE_WORKSPACE: "test"
-                XCODE_SCHEME: "test"
+                XCODE_WORKSPACE: "MyXcodeWorkspace.xcworkspace"
+                XCODE_SCHEME: "MyScheme"
             xcode: latest
             cocoapods: default
         scripts:
-            - xcodebuild build -workspace "$XCODE_WORKSPACE.xcworkspace" -scheme "$XCODE_SCHEME" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+            - xcodebuild build -project "MyXcodeProject.xcodeproj" -scheme "$XCODE_SCHEME" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
         artifacts:
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
